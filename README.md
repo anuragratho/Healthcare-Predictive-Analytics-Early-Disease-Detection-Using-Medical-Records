@@ -21,3 +21,10 @@ emerge from distributed processing of
 symptom data, and how do these findings
 compare with established medical knowledge
 about symptom prevalence?
+
+# Dataset Description
+The project utilized a structured dataset of patient medical records containing five key attributes. PatientID served as the unique identifier for each record, while Age documented patient age in years. Gender recorded biological sex using binary classification. The Symptoms field captured patient- reported health complaints as text entries, and Diagnosis contained the physician's clinical assessment. While the initial dataset contained only six records for development purposes, the schema was designed to accommodate scaling to thousands of records without structural modification. This way, this limited dataset size let to check IF this architecture could really work out while being sure that it will be
+scalable to a more typical for healthcare practice amount of data.
+
+# Data Processing Pipeline
+The presented workflow is divided into four subprocesses from the analysis point of view. The first activity required taking the records which are in CSV format and then loading them into the Hadoop Distributed File System using the commands in terminal. After ingestion, the core MapReduce process launched a custom Java application, which contained the mapper and/or reducer functionalities. The last activity called database integration involved putting the processed results into a MySQL relational database. Last of all, the last data analysis stage used scripts written in Python language to compute other insights from the summarized data using statistical and graphical analysis.
